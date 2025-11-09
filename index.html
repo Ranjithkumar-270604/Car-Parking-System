@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#667eea">
+    <title>Car Parking Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Car Parking Management System</h1>
+        </header>
+
+        <!-- Statistics Dashboard -->
+        <section class="statistics">
+            <div class="stat-card">
+                <h3>Total Revenue</h3>
+                <p class="stat-value" id="totalRevenue">₹0.00</p>
+            </div>
+            <div class="stat-card">
+                <h3>Occupancy Rate</h3>
+                <p class="stat-value" id="occupancyRate">0%</p>
+            </div>
+            <div class="stat-card">
+                <h3>Available Slots</h3>
+                <p class="stat-value" id="availableSlots">0</p>
+            </div>
+        </section>
+
+        <!-- Parking Slots Display -->
+        <section class="parking-slots">
+            <h2>Parking Slots</h2>
+            <div id="slotsGrid" class="slots-grid"></div>
+        </section>
+
+        <!-- Vehicle Entry Form -->
+        <section class="entry-form-section" id="entryFormCard" style="display: none;">
+            <h2>Vehicle Entry</h2>
+            <form id="entryForm">
+                <div class="form-group">
+                    <label for="vehicleNumber">Vehicle Number:</label>
+                    <input type="text" id="vehicleNumber" placeholder="Enter vehicle number" required>
+                </div>
+                <div class="form-group">
+                    <label for="slotSelect">Selected Slot:</label>
+                    <select id="slotSelect" required>
+                        <option value="">-- Select a slot --</option>
+                    </select>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit" class="btn btn-primary">Park Vehicle</button>
+                    <button type="button" id="cancelEntryBtn" class="btn btn-secondary">Cancel</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Active Sessions -->
+        <section class="active-sessions">
+            <h2>Active Parking Sessions</h2>
+            <div class="table-container">
+                <table id="activeSessionsTable">
+                    <thead>
+                        <tr>
+                            <th>Vehicle Number</th>
+                            <th>Slot Number</th>
+                            <th>Entry Time</th>
+                            <th>Duration</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="activeSessionsBody">
+                        <tr>
+                            <td colspan="5" class="no-data">No active sessions</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Last Exited Vehicle -->
+        <section class="last-exited-section" id="exitFormCard">
+            <h2>Last Exited Vehicle</h2>
+            <div id="lastExitedDisplay" class="last-exited-display">
+                <p class="no-exit-message">No vehicle has exited yet.</p>
+            </div>
+        </section>
+
+        <!-- Settings Panel -->
+        <section class="settings">
+            <h2>Settings</h2>
+            <div class="settings-card">
+                <div class="form-group">
+                    <label for="slotCount">Number of Parking Slots:</label>
+                    <input type="number" id="slotCount" min="1" max="50" value="10">
+                    <button type="button" id="updateSlotsBtn" class="btn btn-secondary">Update Slots</button>
+                </div>
+                <div class="form-group">
+                    <label for="hourlyRate">Hourly Rate (₹):</label>
+                    <input type="number" id="hourlyRate" min="0" step="0.01" value="5.00">
+                    <button type="button" id="updateRateBtn" class="btn btn-secondary">Update Rate</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Management -->
+        <section class="data-management">
+            <h2>Data Management</h2>
+            <div class="data-actions">
+                <button type="button" id="exportBtn" class="btn btn-info">Export to PDF</button>
+                <button type="button" id="clearBtn" class="btn btn-warning">Clear All Data</button>
+            </div>
+        </section>
+
+        <!-- History Section -->
+        <section class="history">
+            <h2>Parking History</h2>
+            <div class="table-container">
+                <table id="historyTable">
+                    <thead>
+                        <tr>
+                            <th>Vehicle Number</th>
+                            <th>Slot Number</th>
+                            <th>Entry Time</th>
+                            <th>Exit Time</th>
+                            <th>Duration</th>
+                            <th>Payment</th>
+                        </tr>
+                    </thead>
+                    <tbody id="historyBody">
+                        <tr>
+                            <td colspan="6" class="no-data">No history available</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
