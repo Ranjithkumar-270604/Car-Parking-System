@@ -26,7 +26,6 @@ body {
     }
 }
 
-/* Animated Background - Dark Theme */
 body::before {
     content: '';
     position: fixed;
